@@ -196,7 +196,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   void signIn(String email, String pass) async {
     UserCredential? credential;
-    User? firebaseUser1;
     UIHelper.showLoadingDialog('signing you in...', context);
     try {
       credential = await FirebaseAuth.instance
