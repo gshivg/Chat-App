@@ -216,10 +216,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
           .set(newUser.toMap())
           .then((value) {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => SetInfoScreen(
-                    firebaseUser1: credential!.user!, userModel: newUser)));
+          context,
+          MaterialPageRoute(
+            builder: (context) => SetInfoScreen(
+              firebaseUser1: credential!.user!,
+              userModel: newUser,
+            ),
+          ),
+        );
       });
     }
   }

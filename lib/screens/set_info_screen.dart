@@ -25,7 +25,6 @@ class SetInfoScreen extends StatefulWidget {
   const SetInfoScreen(
       {Key? key, required this.firebaseUser1, required this.userModel})
       : super(key: key);
-
   @override
   State<SetInfoScreen> createState() => _SetInfoScreenState();
 }
@@ -37,7 +36,6 @@ class _SetInfoScreenState extends State<SetInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       body: Container(
         decoration: const BoxDecoration(
           color: StandardColorLibrary.kColor4,

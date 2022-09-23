@@ -104,8 +104,9 @@ class _ChatRoomState extends State<ChatRoom> {
                                 (currentMessage.sender ==
                                     widget.userModel.uid));
                           } else {
+                            String msg = currentMessage.text.toString();
                             return messageBubble(
-                                currentMessage.text.toString(),
+                                msg,
                                 (currentMessage.sender ==
                                     widget.userModel.uid));
                           }

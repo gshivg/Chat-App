@@ -84,9 +84,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     Icons.email_rounded, TextInputType.emailAddress),
                 reusableTextField1('Enter Password', _passController, true,
                     Icons.lock_rounded, TextInputType.visiblePassword),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 55,
@@ -198,7 +196,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   void signIn(String email, String pass) async {
     UserCredential? credential;
-    UserModel? userModel;
     User? firebaseUser1;
     UIHelper.showLoadingDialog('signing you in...', context);
     try {
@@ -237,10 +234,17 @@ class _SignInScreenState extends State<SignInScreen> {
           UserModel.fromMap(userData.data() as Map<String, dynamic>);
       log('Success');
       Navigator.popUntil(context, (route) => route.isFirst);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) {
-        return HomeScreen(
-            userModel: userModel, firebaseUser: credential!.user!);
-      })));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: ((context) {
+            return HomeScreen(
+              userModel: userModel,
+              firebaseUser: credential!.user!,
+            );
+          }),
+        ),
+      );
     }
   }
 }

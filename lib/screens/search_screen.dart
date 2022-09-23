@@ -29,123 +29,163 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text(
-          'Search',
-          style: TextStyle(
-            color: StandardColorLibrary.kColor1,
-            fontSize: 30,
+    return RawKeyboardListener(
+      autofocus: true,
+      focusNode: FocusNode(),
+      onKey: (((value) => setState(() {}))),
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          title: const Text(
+            'Search',
+            style: TextStyle(
+              color: StandardColorLibrary.kColor1,
+              fontSize: 30,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: StandardColorLibrary.kColor4,
         ),
-        centerTitle: true,
-        backgroundColor: StandardColorLibrary.kColor4,
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          color: StandardColorLibrary.kColor4,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              reusableTextField1('display', _searchController, false,
-                  Icons.search_rounded, TextInputType.text),
-              const SizedBox(height: 15),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {});
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.resolveWith((states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return StandardColorLibrary.kColor5;
-                      }
-                      return StandardColorLibrary.kColor3;
-                    }),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
+        body: Container(
+          decoration: const BoxDecoration(
+            color: StandardColorLibrary.kColor4,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                reusableTextField1('display', _searchController, false,
+                    Icons.search_rounded, TextInputType.text),
+                const SizedBox(height: 15),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.resolveWith((states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return StandardColorLibrary.kColor5;
+                        }
+                        return StandardColorLibrary.kColor3;
+                      }),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            bottomRight: Radius.circular(15),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  child: const Text(
-                    'Search',
-                    style: TextStyle(
-                      color: StandardColorLibrary.kColor6,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                    child: const Text(
+                      'Search',
+                      style: TextStyle(
+                        color: StandardColorLibrary.kColor6,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('users')
-                    .where('email', isEqualTo: _searchController.text)
-                    .where('email', isNotEqualTo: widget.userModel.email)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.active) {
-                    if (snapshot.hasData) {
-                      QuerySnapshot dataSnapshot =
-                          snapshot.data as QuerySnapshot;
+                const SizedBox(height: 15),
+                StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .where('email',
+                          isGreaterThanOrEqualTo: _searchController.text)
+                      .where('email', isNotEqualTo: widget.userModel.email)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.active) {
+                      if (snapshot.hasData) {
+                        QuerySnapshot dataSnapshot =
+                            snapshot.data as QuerySnapshot;
+                        log('107');
+                        if (dataSnapshot.docs.isNotEmpty) {
+                          log('109');
+                          List<UserModel> users = [];
+                          for (var element in dataSnapshot.docs) {
+                            UserModel userMap = UserModel.fromMap(
+                                element.data() as Map<String, dynamic>);
 
-                      if (dataSnapshot.docs.isNotEmpty) {
-                        Map<String, dynamic> userMap =
-                            dataSnapshot.docs[0].data() as Map<String, dynamic>;
+                            users.add(userMap);
+                          }
 
-                        UserModel searchedUser = UserModel.fromMap(userMap);
-
-                        return ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(searchedUser.profilePic!),
-                            backgroundColor: Colors.transparent,
-                          ),
-                          title: Text(
-                            searchedUser.fullName.toString(),
-                            style: const TextStyle(
+                          log('${users.length}');
+                          for (var element in users) {
+                            log('${element.fullName}');
+                          }
+                          return Expanded(
+                            child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: users.length,
+                              itemBuilder: ((context, index) {
+                                UserModel searchedUser = users[index];
+                                return ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage:
+                                        NetworkImage(searchedUser.profilePic!),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                  title: Text(
+                                    searchedUser.fullName.toString(),
+                                    style: const TextStyle(
+                                      color: StandardColorLibrary.kColor6,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    searchedUser.email.toString(),
+                                    style: const TextStyle(
+                                      color: StandardColorLibrary.kColor6,
+                                    ),
+                                  ),
+                                  trailing: const Icon(
+                                    Icons.keyboard_arrow_right,
+                                    color: StandardColorLibrary.kColor6,
+                                  ),
+                                  onTap: (() async {
+                                    ChatRoomModel? chatroom =
+                                        await getChatRoomMOdel(searchedUser);
+                                    if (chatroom != null) {
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: ((context) => ChatRoom(
+                                                chatRoom: chatroom,
+                                                targetUser: searchedUser,
+                                                userModel: widget.userModel,
+                                                firebaseUser:
+                                                    widget.firebaseUser,
+                                              )),
+                                        ),
+                                      );
+                                    }
+                                  }),
+                                );
+                              }),
+                            ),
+                          );
+                        } else {
+                          return const Text(
+                            'No results Found',
+                            style: TextStyle(
                               color: StandardColorLibrary.kColor6,
                             ),
-                          ),
-                          subtitle: Text(
-                            searchedUser.email.toString(),
-                            style: const TextStyle(
-                              color: StandardColorLibrary.kColor6,
-                            ),
-                          ),
-                          trailing: const Icon(
-                            Icons.keyboard_arrow_right,
+                          );
+                        }
+                      } else if (snapshot.hasError) {
+                        return const Text(
+                          'An Error has occured',
+                          style: TextStyle(
                             color: StandardColorLibrary.kColor6,
                           ),
-                          onTap: (() async {
-                            ChatRoomModel? chatroom =
-                                await getChatRoomMOdel(searchedUser);
-                            if (chatroom != null) {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: ((context) => ChatRoom(
-                                        chatRoom: chatroom,
-                                        targetUser: searchedUser,
-                                        userModel: widget.userModel,
-                                        firebaseUser: widget.firebaseUser,
-                                      )),
-                                ),
-                              );
-                            }
-                          }),
                         );
                       } else {
                         return const Text(
@@ -155,26 +195,12 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                         );
                       }
-                    } else if (snapshot.hasError) {
-                      return const Text(
-                        'An Error has occured',
-                        style: TextStyle(
-                          color: StandardColorLibrary.kColor6,
-                        ),
-                      );
-                    } else {
-                      return const Text(
-                        'No results Found',
-                        style: TextStyle(
-                          color: StandardColorLibrary.kColor6,
-                        ),
-                      );
                     }
-                  }
-                  return const CircularProgressIndicator();
-                },
-              ),
-            ],
+                    return const CircularProgressIndicator();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
