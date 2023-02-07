@@ -1,8 +1,6 @@
 name: chat_app_asper
 description: A new Flutter project.
-
 publish_to: "none"
-
 version: 1.0.0+1
 
 environment:
@@ -11,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.2
   firebase_core: ^1.21.0
   firebase_auth: ^3.6.4

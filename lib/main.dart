@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:uuid/uuid.dart';
-// import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 var uuid = const Uuid();
 
