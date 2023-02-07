@@ -37,7 +37,7 @@ Some popular options are [Android Studio](https://developer.android.com/studio "
 You'll also need android sdk/emulator of iOS sumulator installed
 > Run the command below to see other tools you need
 
-    flutter --doctor
+    flutter doctor
 
 For more information refer [Flutter Docs](https://docs.flutter.dev)
 
