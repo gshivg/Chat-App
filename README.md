@@ -3,7 +3,7 @@ A basic chat application, made with flutter as the frontend and firebase and fir
 
 ## Setting Up Flutter
 
-![Flutter](https://storage.googleapis.com/cms-storage-bucket/847ae81f5430402216fd.svg)
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://storage.googleapis.com/cms-storage-bucket/847ae81f5430402216fd.svg" width="600" alt="Laravel Logo"></a></p>
 
 Start by installing [Flutter](https://docs.flutter.dev/get-started/install "Install Flutter") on your machine.
 > Make sure you have version 2.17.6 or higher
@@ -43,7 +43,8 @@ For more information refer [Flutter Docs](https://docs.flutter.dev)
 
 ### Firebase & Firestore Setup
 
-![Firebase](https://firebase.google.com/static/images/brand-guidelines/logo-built_black.png)
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://firebase.google.com/static/images/brand-guidelines/logo-built_black.png" width="600" alt="Laravel Logo"></a></p>
+
 
 Setup Firebase by visiting [Firebase](https://firebase.google.com) and following steps to create a new project.
 
