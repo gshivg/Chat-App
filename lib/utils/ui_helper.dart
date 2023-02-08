@@ -1,4 +1,4 @@
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 class UIHelper {

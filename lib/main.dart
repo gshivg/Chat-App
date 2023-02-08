@@ -1,10 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages, await_only_futures
 
-import 'package:chat_app_asper/utils/firebase_helper.dart';
-import 'package:chat_app_asper/models/user_model.dart';
-import 'package:chat_app_asper/screens/home_screen.dart';
-import 'package:chat_app_asper/screens/sign-in-screen.dart';
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/utils/firebase_helper.dart';
+import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/screens/sign-in-screen.dart';
+import 'package:chat_app/utils/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

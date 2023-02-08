@@ -1,8 +1,8 @@
 // ignore_for_file: sized_box_for_whitespace, must_be_immutable
 
-import 'package:chat_app_asper/models/user_model.dart';
-import 'package:chat_app_asper/screens/update_profile_screen.dart';
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/screens/update_profile_screen.dart';
+import 'package:chat_app/utils/constant.dart';
 
 import 'package:flutter/material.dart';
 

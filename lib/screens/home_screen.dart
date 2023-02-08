@@ -1,16 +1,16 @@
 import 'dart:developer';
 
-import 'package:chat_app_asper/models/chat_room_model.dart';
-import 'package:chat_app_asper/utils/firebase_helper.dart';
-import 'package:chat_app_asper/models/user_model.dart';
-import 'package:chat_app_asper/screens/search_screen.dart';
-import 'package:chat_app_asper/utils/constant.dart';
-import 'package:chat_app_asper/screens/side_menu.dart';
+import 'package:chat_app/models/chat_room_model.dart';
+import 'package:chat_app/utils/firebase_helper.dart';
+import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/screens/search_screen.dart';
+import 'package:chat_app/utils/constant.dart';
+import 'package:chat_app/screens/side_menu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:chat_app_asper/screens/chat_room_screen.dart';
+import 'package:chat_app/screens/chat_room_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final UserModel userModel;

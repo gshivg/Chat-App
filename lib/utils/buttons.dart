@@ -1,6 +1,6 @@
 // ignore_for_file: camel_case_types, must_be_immutable, sized_box_for_whitespace
 
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 class button1 extends StatefulWidget {

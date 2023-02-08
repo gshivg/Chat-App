@@ -6,7 +6,7 @@ A basic chat application, made with flutter as the frontend and firebase and fir
 ![Flutter](https://storage.googleapis.com/cms-storage-bucket/847ae81f5430402216fd.svg)
 
 Start by installing [Flutter](https://docs.flutter.dev/get-started/install "Install Flutter") on your machine.
-> Make sure you have version 2.7 or higher
+> Make sure you have version 2.17.6 or higher
 
 > Check by running the command below
 

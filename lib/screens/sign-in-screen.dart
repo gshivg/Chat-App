@@ -2,16 +2,16 @@
 
 import 'dart:developer';
 
-import 'package:chat_app_asper/models/user_model.dart';
-import 'package:chat_app_asper/screens/home_screen.dart';
-import 'package:chat_app_asper/screens/sign_up_screen.dart';
-import 'package:chat_app_asper/utils/reusable_test_fiels.dart';
-import 'package:chat_app_asper/utils/ui_helper.dart';
+import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/screens/sign_up_screen.dart';
+import 'package:chat_app/utils/reusable_test_fiels.dart';
+import 'package:chat_app/utils/ui_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/utils/constant.dart';
 import 'package:another_flushbar/flushbar.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:firebase_auth/firebase_auth.dart';

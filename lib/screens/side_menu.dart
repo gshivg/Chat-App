@@ -1,9 +1,9 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:chat_app_asper/main.dart';
-import 'package:chat_app_asper/models/user_model.dart';
-import 'package:chat_app_asper/screens/profile_screen.dart';
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/main.dart';
+import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/screens/profile_screen.dart';
+import 'package:chat_app/utils/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

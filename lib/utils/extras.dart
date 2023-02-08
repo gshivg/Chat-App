@@ -1,4 +1,4 @@
-import 'package:chat_app_asper/utils/constant.dart';
+import 'package:chat_app/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 textFeldStyle(String text, IconData iconData, Color colour) {
@@ -51,7 +51,7 @@ text3() {
     'You will receive an SMS on your phone number\nfor verfication. Standard rates may apply.',
     textAlign: TextAlign.center,
     style: TextStyle(
-      color:StandardColorLibrary.kColor2.withOpacity(0.5),
+      color: StandardColorLibrary.kColor2.withOpacity(0.5),
     ),
   );
 }
